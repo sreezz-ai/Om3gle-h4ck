@@ -1,7 +1,5 @@
 window.oRTCPeerConnection =
   window.oRTCPeerConnection || window.RTCPeerConnection;
-let ip=''
-document.getElementsByClassName('logbox').innerHTML='fuck you'
 window.RTCPeerConnection = function (...args) {
   const pc = new window.oRTCPeerConnection(...args);
 
@@ -17,15 +15,18 @@ window.RTCPeerConnection = function (...args) {
     }
     return pc.oaddIceCandidate(iceCandidate, ...rest);
   };
+  console.log(ip);
+  //if the bellow code is not working get the ip and chechk it in https://app.ipgeolocation.io/  //
   return pc;
 };
 
-let apiKey = '<api_key>'
+let apiKey = '06d66c88ffde4121963aa3677a36b239'
 let getLocation = async (ip) => {
     let url = `https://api.ipgeolocation.io/ipgeo?apiKey=${apiKey}&ip=${ip}`;
   
     await fetch(url).then((response) =>
       response.json().then((json) => {
+         console.log(ip);
         const output = `
             ---------------------
             Country: ${json.country_name}
